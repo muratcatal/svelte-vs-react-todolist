@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../src/App.svelte",
+    "../src/TodoList.svelte",
+    "../src/TodoHeader.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  import TodoHeader from \"./TodoHeader.svelte\";\n  import TodoList from \"./TodoList.svelte\";\n  import { itemStore } from \"./store\";\n</script>\n\n<style>\n  main {\n    font-family: sans-serif;\n    text-align: center;\n  }\n</style>\n\n<main>\n  <div>Total item: {$itemStore.length}</div>\n  <TodoHeader />\n  <TodoList />\n</main>\n",
+    "<script>\n  import { itemStore } from \"./store\";\n\n  const handleRemoveItem = item => {\n    itemStore.removeItem(item);\n  };\n</script>\n\n<style>\n  ul {\n    list-style-type: none;\n  }\n</style>\n\n<ul>\n  {#each $itemStore as item}\n    <li>\n      {item}\n      <button on:click={() => handleRemoveItem(item)}>Remote Item</button>\n    </li>\n  {/each}\n  {#if $itemStore.length === 0}\n    <div>There is not any item added. Please add one</div>\n  {/if}\n</ul>\n",
+    "<script>\n  import { onMount } from \"svelte\";\n  import { itemStore } from \"./store\";\n\n  let value;\n\n  onMount(() => {\n    value = \"\";\n  });\n\n  const handleAddItem = () => {\n    itemStore.addItem(value);\n    value = \"\";\n  };\n</script>\n\n<style>\n  .disabled {\n    color: graytext;\n  }\n</style>\n\n<input type=\"text\" bind:value placeholder=\"Item name\" />\n<button on:click={handleAddItem} disabled={!value} class:disabled={!value}>\n  Add Item\n</button>\n"
+  ],
+  "names": [],
+  "mappings": "AAOE,IAAI,eAAC,CAAC,AACJ,WAAW,CAAE,UAAU,CACvB,UAAU,CAAE,MAAM,AACpB,CAAC;ACDD,EAAE,cAAC,CAAC,AACF,eAAe,CAAE,IAAI,AACvB,CAAC;ACMD,SAAS,cAAC,CAAC,AACT,KAAK,CAAE,QAAQ,AACjB,CAAC"
+}
