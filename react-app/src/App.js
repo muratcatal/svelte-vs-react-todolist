@@ -6,9 +6,11 @@ import { TodoList } from './TodoList';
 import { TodoListProvider } from './store';
 import { Total } from './Total';
 
+const initialState = [];
+
 function App() {
   return (
-    <TodoListProvider todoList={[]}>
+    <TodoListProvider todoList={initialState}>
       <Total />
       <TodoHeader />
       <TodoList />
