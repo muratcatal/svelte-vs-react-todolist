@@ -11,11 +11,11 @@ export const TodoList = () => {
 
     return (
         <ul>
-            {todoList && todoList.map(todoList => {
+            {todoList && todoList.map((todo, index) => {
                 return (
-                    <li>
-                        {todoList}
-                        <button onClick={handleRemove.bind(null, todoList)}>Remote Item</button>
+                    <li key={`${index}_${todo}`}>
+                        {todo}
+                        <button onClick={handleRemove.bind(null, todo)}>Remote Item</button>
                     </li>
                 )
             })}
