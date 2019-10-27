@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react';
 import { TodoListContext } from './store';
 
 export const TodoHeader = () => {
-    const todoListStore = useContext(TodoListContext);
+    const { addItem } = useContext(TodoListContext);
+
     const [itemName, setItemName] = useState('')
 
     const handleAddItem = (e) => {
         e.preventDefault();
-        todoListStore.addItem(itemName);
+        addItem(itemName);
         setItemName('');
     }
 
