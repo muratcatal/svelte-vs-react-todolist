@@ -70,6 +70,6 @@ ul {
   list-style-type: none;
 }
 
-.disabled {
+[disabled] {
   color: graytext;
 }
