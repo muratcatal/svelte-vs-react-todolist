@@ -15,7 +15,7 @@
 </script>
 
 <style>
-  .disabled {
+  [disabled] {
     color: graytext;
   }
 </style>
